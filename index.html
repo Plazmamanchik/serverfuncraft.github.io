@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FunCraft</title>
-  <link rel="icon" href="pictures/favicon.ico">
+  <link rel="icon" href="img/favicon.ico">
   <style>
      /* Загальний стиль сторінки */
      body {
@@ -18,7 +18,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      position: relative; /* Потрібно для коректного позиціонування псевдоелемента */
+      overflow: hidden; /* Забороняє прокручування */
     }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Чорний колір із прозорістю 50% */
+      z-index: -1; /* Розміщення позаду основного вмісту */
+    }
+
 
     /* Заголовок */
     h1 {
@@ -28,8 +42,9 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: slideInRight 2s;
+      
       margin: 50px 0 0; /* Додано верхній відступ */
-      text-shadow: 0 0 10px #ff8800, 0 0 20px #F2FB15;
+     /* text-shadow: 0 0 10px #ff8800, 0 0 20px #F2FB15;*/
     }
 
     @keyframes slideInRight {
@@ -65,7 +80,7 @@
       margin-top: 20px;
     }
 
-    .ruleson, .tiktok {
+    .btn {
       background: linear-gradient(to right, #F2FB15, #FDA118);
       border: none;
       border-radius: 15px;
@@ -77,7 +92,7 @@
       transition: transform 0.3s ease, background 0.3s ease;
     }
 
-    .ruleson:hover, .tiktok:hover {
+    .btn {
       background: linear-gradient(to right, #FDA118, #F2FB15);
       transform: scale(1.05);
     }
@@ -123,7 +138,7 @@
         font-size: 1em;
       }
 
-      .ruleson, .tiktok {
+      .btn{
         font-size: 0.9em;
         padding: 10px;
       }
@@ -133,7 +148,7 @@
 <body>
 
   <!-- Новини -->
-  <div id="news-ticker"><span>Вайп 21.12.2024 о 12:00 по Києву</span></div>
+  <div id="news-ticker"><span>Перевірте наш Discord сервер!</span></div>
 
   <!-- Заголовок -->
   <h1>Ласкаво просимо до FunCraft</h1>
@@ -145,9 +160,10 @@
 
   <!-- Контейнер кнопок -->
   <div class="buttons-container">
-    <button class="tiktok" onclick="window.open('https://www.tiktok.com/@aktiv2329')">Офіційний Тіктокер серверу</button>
-    <button class="ruleson" onclick="window.location.href='rules.html'">Правила</button>
-    <button class="ruleson" onclick="window.open('https://discord.gg/KtGdYeQtXd')">Перейти у Discord</button>
+    <button class="btn" onclick="window.open('https://www.tiktok.com/@aktiv2329')">Офіційний Тіктокер серверу</button>
+    <button class="btn" onclick="window.location.href='rules.html'">Правила</button>
+    <button class="btn" onclick="window.location.href='donate.html'">Донат</button>
+    <button class="btn" onclick="window.open('https://discord.gg/KtGdYeQtXd')">Перейти у Discord</button>
   </div>
 
   <!-- Слайдер -->
@@ -210,7 +226,7 @@
 
     // Новини
     const news = [
-      "Вайп 21.12.2024 о 12:00 по Києву",
+      "Пройшов вайп о 21.12.2024",
       "Перевірте наш Discord сервер!",
       "Знижка на донати цього тижня!"
     ];
