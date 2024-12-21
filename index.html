@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FunCraft</title>
+  <link rel="icon" href="pictures/favicon.ico">
+  <style>
+     /* Загальний стиль сторінки */
+     body {
+      background-image: url("pictures/background2.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Заголовок */
+    h1 {
+      font-size: 4em;
+      text-align: center;
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideInRight 2s;
+      margin: 50px 0 0; /* Додано верхній відступ */
+      text-shadow: 0 0 10px #ff8800, 0 0 20px #F2FB15;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* IP */
+    .ip-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .ip {
+      padding: 10px 20px;
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      border-radius: 10px;
+      font-size: 1.5em;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* Стиль для кнопок */
+    .buttons-container {
+      display: flex;
+      flex-direction: row; /* Горизонтальне розташування кнопок */
+      align-items: center; /* Центрування кнопок по вертикалі */
+      margin-top: 20px;
+    }
+
+    .ruleson, .tiktok {
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      border: none;
+      border-radius: 15px;
+      padding: 10px 15px;
+      font-size: 1em;
+      cursor: pointer;
+      text-align: center;
+      margin: 0 10px; /* Відступи між кнопками */
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .ruleson:hover, .tiktok:hover {
+      background: linear-gradient(to right, #FDA118, #F2FB15);
+      transform: scale(1.05);
+    }
+
+    /* Новини */
+    #news-ticker {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      z-index: 999;
+      border-bottom: 3px solid #FDA118;
+    }
+
+    #news-ticker span {
+      animation: glow-news-ticker 1.5s infinite ease-in-out;
+    }
+
+    @keyframes glow-news-ticker  {
+      0%, 100% {
+        text-shadow: 0 0 10px #FDA118, 0 0 20px #F2FB15;
+      }
+      50% {
+        text-shadow: 0 0 20px #F2FB15, 0 0 30px #FDA118;
+      }
+    }
+
+
+
+    /* Адаптивність */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3em;
+      }
+
+      .ip {
+        font-size: 1em;
+      }
+
+      .ruleson, .tiktok {
+        font-size: 0.9em;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Новини -->
+  <div id="news-ticker"><span>Вайп 21.12.2024 о 12:00 по Києву</span></div>
+
+  <!-- Заголовок -->
+  <h1>Ласкаво просимо до FunCraft</h1>
+
+  <!-- IP -->
+  <div class="ip-container" onclick="copyToClipboard('91.231.182.114:19221')">
+    <div class="ip">IP: 91.231.182.114:19221</div>
+  </div>
+
+  <!-- Контейнер кнопок -->
+  <div class="buttons-container">
+    <button class="tiktok" onclick="window.open('https://www.tiktok.com/@aktiv2329')">Офіційний Тіктокер серверу</button>
+    <button class="ruleson" onclick="window.location.href='rules.html'">Правила</button>
+    <button class="ruleson" onclick="window.open('https://discord.gg/KtGdYeQtXd')">Перейти у Discord</button>
+  </div>
+
+  <!-- Слайдер -->
+  <div class="slider">
+    <div class="slide"><img src="pictures/slides/spawn.png" alt="Слайд 1"></div>
+    <div class="slide"><img src="pictures/slides/spawn2.png" alt="Слайд 2"></div>
+    <div class="slide"><img src="pictures/slides/arena.png" alt="Слайд 3"></div>
+    <div class="slide"><img src="pictures/slides/pvparena1.png" alt="Слайд 4"></div>
+    <div class="slide"><img src="pictures/slides/pvparena2.png" alt="Слайд 5"></div>
+    <div class="slide"><img src="pictures/slides/pvparena3.png" alt="Слайд 6"></div>
+  </div>
+
+  <style>
+    .slider {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 15px;
+    }
+    .slide {
+      min-width: 100%;
+      transition: transform 0.5s ease;
+    }
+    .slider img {
+      width: 100%;
+      display: block;
+    }
+  </style>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides.forEach((slide, index) => {
+        slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+      });
+    }, 3000);
+  </script>
+
+  <script>
+    // Копіювання IP
+    function copyToClipboard(text) {
+      const input = document.createElement('input');
+      input.setAttribute('value', text);
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+
+      const ipElement = document.querySelector('.ip');
+      ipElement.textContent = "Скопійовано!";
+
+      setTimeout(() => {
+        ipElement.textContent = "IP: " + text;
+      }, 1500);
+    }
+
+    // Новини
+    const news = [
+      "Вайп 21.12.2024 о 12:00 по Києву",
+      "Перевірте наш Discord сервер!",
+      "Знижка на донати цього тижня!"
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      document.getElementById('news-ticker').innerHTML = `<span>${news[index]}</span>`;
+      index = (index + 1) % news.length;
+    }, 3000);
+  </script>
+</body>
+</html>
