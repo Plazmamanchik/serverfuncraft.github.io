@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Донат - FunCraft</title>
+  <link rel="icon" href="img/favicon.ico">
+  <style>
+    /* Загальний стиль сторінки */
+    body {
+      background-image: url("img/background2.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden; /* Заборона горизонтального скролу */
+    }
+
+    body::before {
+      content: '';
+      position: fixed; /* Фон залишається нерухомим */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    /* Заголовок */
+    h1 {
+      font-size: 3.5em;
+      text-align: center;
+      margin-top: 20px;
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Контейнер для донату */
+    .donate-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin: 20px 0;
+      width: 90%;
+    }
+
+    .donate-list {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .donate-block {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      min-width: 200px;
+      text-align: center;
+      font-size: 1.2em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s ease;
+    }
+
+    .donate-block:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .donate-block h2 {
+      margin: 10px 0;
+      font-size: 1.5em;
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Стиль для блоку Бокс Койн */
+    .donate-coin {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 10px 15px;
+      width: 250px;
+      text-align: center;
+      font-size: 1em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .donate-coin h2 {
+      font-size: 1.5em;
+      background: linear-gradient(to right, #FDA118, #F2FB15);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Кнопка повернення */
+    .back-btn {
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      border: none;
+      border-radius: 25px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin: 30px 0;
+      transition: background 0.3s, transform 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(to right, #FDA118, #F2FB15);
+      transform: scale(1.05);
+    }
+
+    .fly-title {
+      background: linear-gradient(to right, #00BFFF, #80DFFF, #FFFFFF);
+      -webkit-background-clip: text;
+      color: transparent; /* Задає колір тексту прозорим, щоб фон виглядав як текст */
+      font-weight: bold; /* Робить текст жирним */
+      font-size: 3em; /* Задає розмір тексту */
+      text-align: center; /* Центрує текст */
+    }
+
+    /* Стиль для інформації про покупку */
+    .purchase-info {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      font-size: 1.2em;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slide-up 1s forwards;
+    }
+
+    .purchase-info p {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .purchase-info strong {
+      color: #FDA118;
+    }
+
+    /* Анімація для інформації */
+    @keyframes slide-up {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Текст для донату з градієнтом */
+    .gradient-text {
+      font-size: 1.5em;
+      background: linear-gradient(to right, #F2FB15, #FDA118);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: bold;
+      
+    }
+
+    /* Адаптивність */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .donate-block {
+        min-width: 150px;
+      }
+
+      .donate-coin {
+        width: 200px;
+        font-size: 0.9em;
+        padding: 8px 10px;
+      }
+
+      .back-btn {
+        font-size: 1em;
+        padding: 12px 24px;
+      }
+
+      .purchase-info {
+        font-size: 1em;
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Донат FunCraft</h1>
+
+  <div class="donate-container">
+    <div class="donate-list">
+      <div class="donate-block" name="vip">
+        <h2 name="vip">VIP</h2>
+        <p><strong>Ціна:</strong> 15 грн / 30 днів</p>
+        <p><strong>Можливості:</strong> Відкривати ендер скриню</p>
+      </div>
+      <div class="donate-block" name="fly">
+        <h2 class="fly-title">FLY</h2>
+        <p><strong>Ціна:</strong> 35 грн / 30 днів</p>
+        <p><strong>Можливості:</strong> Літати, відкривати ендер скриню</p>
+      </div>
+    </div>
+    <div class="donate-coin">
+      <h2>Бокс Койн</h2>
+      <p><strong>Ціна:</strong> 1 грн за 1 койн</p>
+      <p>Це донат валюта</p>
+    </div>
+  </div>
+
+  <!-- Інформація для покупки з градієнтом -->
+  <div class="purchase-info">
+    <p><span class="gradient-text">Щоб придбати донат, напишіть:</span></p>
+    <p>У Discord: <strong>alekspro228</strong></p>
+    <p>У Telegram: <strong>alekspro228777ID</strong></p>
+  </div>
+
+  <button class="back-btn" onclick="window.location.href='index.html'">Повернутися на головну</button>
+</body>
+</html>
